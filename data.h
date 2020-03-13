@@ -1,4 +1,8 @@
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
+typedef enum {
+    VAZIO = 46,
+    BRANCA = 42,
+    PRETA = 35
+} CASA;
 typedef struct {
     int coluna;
     int linha;

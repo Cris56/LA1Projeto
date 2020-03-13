@@ -6,6 +6,10 @@
 
 int jogar(ESTADO *e, COORDENADA c) { //[A completar]
     printf("jogar %d %d\n", c.coluna, c.linha);
+    
+    COORDENADA ultima_jogada;
+    e->tab[c.coluna][c.linha] = BRANCA;
+    e->tab[ultima_jogada.linha][ultima_jogada.coluna] = PRETA;
     return 1;
 }
 //Esta função deverá receber o estado atual e uma coordenada e modificar o estado ao jogar na casa correta se a jogada for válida.
