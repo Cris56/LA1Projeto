@@ -1,0 +1,15 @@
+                                           RESUMO
+
+  Neste guião começamos por organizar todos os ficheiros (main.c e os restantes .c e respetivos .h).
+De seguida, dentro do ficheiro data.c desenvolvemos a função "ESTADO *inicializar_estado()"; no data.h,
+na primeira linha, atribuímos valores a "VAZIO", "BRANCA" e "PRETA"; no interface.c fizemos a função
+"void mostrar_tabuleiro(ESTADO *e)" e no logic.c desenvolvemos a função "int jogar(ESTADO *e, COORDENADA c)",
+de forma apenas a substituir a coordenada jogada pela peça branca e a anterior pela peça preta (sem verificar
+se a jogada é válida).
+
+  Em relação ás dúvidas, no logic.c, na função "int jogar(ESTADO *e, COORDENADA c)" se não for incluido
+"COORDENADA ultima_jogada;" em baixo na linha "e->tab[ultima_jogada.linha][ultima_jogada.coluna] = PRETA;",
+a função dá erro a dizer que o identificador 'ultima_jogada' não foi declarado. Na interface.c tivemos
+dificuldades a desenvolver a função "void mostrar_tabuleiro(ESTADO *e)". Outras dúvidas menores, conseguimos
+resolver com pesquisa.
+   
