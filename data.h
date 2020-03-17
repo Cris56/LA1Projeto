@@ -1,7 +1,9 @@
 typedef enum {
-    VAZIO = 46,
-    BRANCA = 42,
-    PRETA = 35
+    UM = '1',
+    DOIS = '2',
+    VAZIO = '.',
+    BRANCA = '*',
+    PRETA = '#'
 } CASA;
 typedef struct {
     int coluna;
