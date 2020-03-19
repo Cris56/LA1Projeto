@@ -62,7 +62,7 @@ void mais_comandos(ESTADO *e) {
     e->num_comandos += 1;
 }
 
-COORDENADA get_ultimajogada(ESTADO *e){
-    COORDENADA last = e -> ultima_jogada;
+COORDENADA obter_ultima_jogada(ESTADO *e){
+    COORDENADA last = e->ultima_jogada;
     return last;
 }
