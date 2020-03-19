@@ -22,7 +22,9 @@ int jogar(ESTADO *e, COORDENADA c) { //[A completar]
     printf("jogar %d %d\n", c.coluna, c.linha);
     
     if(verifica_jogada(e,c)){
+        COORDENADA ult_jog = get_ultimajogada(e);
         mudar_casa(e,c,BRANCA);
+        mudar_casa(e,ult_jog,PRETA);
         return 1;
     }
     return 0;
