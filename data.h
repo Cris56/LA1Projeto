@@ -140,6 +140,8 @@ int obter_num_comandos(ESTADO *e);
  */
 void mais_comandos(ESTADO *e);
 
+COORDENADA get_ultimajogada(ESTADO *e);
+
 #endif
 
 /*Por completar:
