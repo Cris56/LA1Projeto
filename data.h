@@ -140,11 +140,15 @@ int obter_num_comandos(ESTADO *e);
  */
 void mais_comandos(ESTADO *e);
 
-COORDENADA get_ultimajogada(ESTADO *e);
+/**
+ * \brief Obtém a última jogada.
+ * @param e Apontador para o estado
+ * @return A coordenada da última jogada
+ */
+COORDENADA obter_ultima_jogada(ESTADO *e);
 
 #endif
 
 /*Por completar:
- * [obter ultima jogada]
  * [alterar ultima jogada]
  */
