@@ -25,7 +25,9 @@ typedef struct {
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
-CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+CASA obter_casa(ESTADO *e, COORDENADA c);
+void mudar_casa(ESTADO *e, COORDENADA c, CASA A);
+COORDENADA coordenada(int j, int i);
 
 //tab armazena informação sobre o tabuleiro;
 //ultima_jogada a coordenada da última jogada;
