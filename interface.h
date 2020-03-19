@@ -26,14 +26,17 @@ void mostrar_tabuleiro(ESTADO *e);
 int interpretador(ESTADO *e);
 
 /**
- * \brief Grava um ficheiro .txt com o tabuleiro atual.
+ * \brief Grava um ficheiro com o tabuleiro atual.
  * @param e Apontador para o estado
+ * @param nome Nome do ficheiro a criar/editar
  */
-void gravar(ESTADO *e);
+void gravar(ESTADO *e, char *nome);
 
 /**
- * \brief Abre um ficheiro .txt em modo de leitura.
+ * \brief Abre um ficheiro.
+ * @param nome Nome do ficheiro a abrir
  */
-void ler();
+void ler(char *nome);
+
 
 #endif
