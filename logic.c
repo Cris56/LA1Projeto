@@ -4,30 +4,29 @@
 #include "data.h"
 #include "logic.h"
 
-int verifica_jogada(ESTADO *e, COORDENADA c){
-    int col1, lin1, col2, lin2;
-
-    col1 = e -> ultima_jogada.coluna;
-    lin1 = e -> ultima_jogada.linha;
-    col2 = c.coluna;
-    lin2 = c.linha;
-
-    if ((col1-col2)^2 <= 1 && (lin1-lin2)^2 <= 1 && obter_casa(e,c) == VAZIO){
-        return 1;
-    }
-    else return 0;
-}
-
 int jogar(ESTADO *e, COORDENADA c) { //[A completar]
-    printf("jogar %d %d\n", c.coluna, c.linha);
-    
-    if(verifica_jogada(e,c)){
-        COORDENADA ult_jog = get_ultimajogada(e);
-        mudar_casa(e,c,BRANCA);
-        mudar_casa(e,ult_jog,PRETA);
+    int p = verifica_jogada(e, c);
+    if(p == 1) {
+        COORDENADA ult_jog = obter_ultima_jogada(e);
+        mudar_casa(e, c,BRANCA);
+        mudar_casa(e, ult_jog,PRETA);
+        e->ultima_jogada = c;
         return 1;
     }
     return 0;
 }
-//Esta função deverá receber o estado atual e uma coordenada e modificar o estado ao jogar na casa correta se a jogada for válida.
-//A função devolve verdadeiro (valor diferente de zero) se for possível jogar e falso (zero) caso não seja possível.
+
+int verifica_jogada(ESTADO *e, COORDENADA c) {
+    COORDENADA ultima = obter_ultima_jogada(e);
+    int col1, lin1, col2, lin2;
+    col1 = ultima.coluna;
+    lin1 = ultima.linha;
+    col2 = c.coluna;
+    lin2 = c.linha;
+    int difcol = (col1 - col2);
+    int diflin = (lin1 - lin2);
+    if ((difcol * difcol) == 0 && (diflin * diflin) == 0) return 0;
+    if (((difcol) * (difcol) <= 1) && ((diflin) * (diflin) <= 1) && (obter_casa(e, c) == VAZIO))
+        return 1;
+    else return 0;
+}
