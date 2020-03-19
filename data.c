@@ -3,10 +3,12 @@
 #include <string.h>
 #include "data.h"
 
-ESTADO *inicializar_estado() { //Esta função deverá criar um estado vazio (com o tabuleiro inicializado)
+ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
+    e->num_comandos = 1;
     e->jogador_atual = 1;
     e->num_jogadas = 0;
+    e->ultima_jogada = coordenada(4, 3);
     for(int i = 0; i < 8; i++)
         for(int j = 0; j < 8; j++) {
             mudar_casa(e, coordenada(j, i), VAZIO);
@@ -17,27 +19,45 @@ ESTADO *inicializar_estado() { //Esta função deverá criar um estado vazio (co
     return e;
 }
 
-int obter_jogador_atual(ESTADO *estado) { //Esta função permite obter o número do jogador atual
-
+int obter_jogador_atual(ESTADO *e) {
+    int jog = e->jogador_atual;
+    return jog;
 }
 
-int obter_numero_de_jogadas(ESTADO *estado) { //Esta função permite obter quantas jogadas foram efetuadas (cada jogada tem o movimento de dois jogadores)
-
-
+void mudar_jogador_atual(ESTADO *e, int j) {
+    e->jogador_atual = j;
 }
 
-CASA obter_casa(ESTADO *e, COORDENADA c) { //Esta função permite obter o estado atual da casa
+int obter_numero_jogadas(ESTADO *e) {
+    int n = e->num_jogadas;
+    return n;
+}
+
+void mais_jogadas(ESTADO *e) {
+    e->num_jogadas += 1;
+}
+
+CASA obter_casa(ESTADO *e, COORDENADA c) {
     CASA casa = e->tab[c.coluna][c.linha];
     return casa;
 }
 
-void mudar_casa(ESTADO *e, COORDENADA c, CASA A) { //Muda o estado da casa
+void mudar_casa(ESTADO *e, COORDENADA c, CASA A) {
     e->tab[c.coluna][c.linha] = A;
 }
 
-COORDENADA coordenada(int j, int i) { //Transforma dois inteiros i e j numa coordenada
+COORDENADA coordenada(int j, int i) {
     COORDENADA c;
     c.coluna = j;
     c.linha = i;
     return c;
+}
+
+int obter_num_comandos(ESTADO *e) {
+    int cmds = e->num_comandos;
+    return cmds;
+}
+
+void mais_comandos(ESTADO *e) {
+    e->num_comandos += 1;
 }
