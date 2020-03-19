@@ -25,4 +25,15 @@ void mostrar_tabuleiro(ESTADO *e);
  */
 int interpretador(ESTADO *e);
 
+/**
+ * \brief Grava um ficheiro .txt com o tabuleiro atual.
+ * @param e Apontador para o estado
+ */
+void gravar(ESTADO *e);
+
+/**
+ * \brief Abre um ficheiro .txt em modo de leitura.
+ */
+void ler();
+
 #endif
