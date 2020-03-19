@@ -17,4 +17,6 @@
  */
 int jogar(ESTADO *e, COORDENADA c);
 
+int verifica_jogada(ESTADO *e, COORDENADA c);
+
 #endif
