@@ -61,3 +61,8 @@ int obter_num_comandos(ESTADO *e) {
 void mais_comandos(ESTADO *e) {
     e->num_comandos += 1;
 }
+
+COORDENADA get_ultimajogada(ESTADO *e){
+    COORDENADA last = e -> ultima_jogada;
+    return last;
+}
