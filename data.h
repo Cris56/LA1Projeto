@@ -64,6 +64,8 @@ typedef struct {
     int num_jogadas;
     /** O número do jogador atual */
     int jogador_atual;
+    /** O número de comandos executados */
+    int num_comandos;
 } ESTADO;
 
 /**
@@ -72,6 +74,34 @@ typedef struct {
  * @returns O novo estado
  */
 ESTADO *inicializar_estado();
+
+/**
+ * \brief Obtém o jogador atual.
+ * @param e Apontador para o estado
+ * @return O número do jogador atual
+ */
+int obter_jogador_atual(ESTADO *e);
+
+/**
+ * \brief Muda o número do jogador atual
+ * @param e Apontador para o estado
+ * @param j Número do jogador a alterar
+ */
+void mudar_jogador_atual(ESTADO *e, int j);
+
+/**
+ * \brief Permite obter quantas jogadas foram efetuadas.
+ * (Cada jogada tem o movimento de dois jogadores)
+ * @param e Apontador para o estado
+ * @return Número de jogadas
+ */
+int obter_numero_jogadas(ESTADO *e);
+
+/**
+ * \brief Adiciona uma jogada ao número existente
+ * @param e Apontador para o estado
+ */
+void mais_jogadas(ESTADO *e);
 
 /**
  * \brief Obtém a casa indicada.
@@ -97,11 +127,22 @@ void mudar_casa(ESTADO *e, COORDENADA c, CASA A);
  */
 COORDENADA coordenada(int j, int i);
 
+/**
+ * \brief Obtém o número total de comandos executados
+ * @param e Apontador para o estado
+ * @return Número de comandos
+ */
+int obter_num_comandos(ESTADO *e);
+
+/**
+ * \brief Adiciona um ao número total de comandos executados
+ * @param e Apontador para o estado
+ */
+void mais_comandos(ESTADO *e);
+
 #endif
 
-/* Por completar:
- * int obter_jogador_atual(ESTADO *estado);
- * int obter_numero_de_jogadas(ESTADO *estado);
- * [mudar jogador atual]
- * [mudar numero de jogadas]
+/*Por completar:
+ * [obter ultima jogada]
+ * [alterar ultima jogada]
  */
