@@ -17,6 +17,12 @@
  */
 int jogar(ESTADO *e, COORDENADA c);
 
+/**
+ * \brief Verifica se a jogada indicada é válida.
+ * @param e Apontador para o estado
+ * @param c A coordenada da jogada pretendida
+ * @return 1 se a jogada for possível, 0 se não for
+ */
 int verifica_jogada(ESTADO *e, COORDENADA c);
 
 #endif
