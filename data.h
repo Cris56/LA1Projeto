@@ -147,6 +147,10 @@ void mais_comandos(ESTADO *e);
  */
 COORDENADA obter_ultima_jogada(ESTADO *e);
 
+int fimdojogo(ESTADO *e, COORDENADA c);
+
+int vizinhas_cheias(ESTADO *e, COORDENADA c);
+
 #endif
 
 /*Por completar:
