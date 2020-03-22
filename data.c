@@ -66,3 +66,21 @@ COORDENADA obter_ultima_jogada(ESTADO *e){
     COORDENADA last = e->ultima_jogada;
     return last;
 }
+
+int fimdojogo(ESTADO *e, COORDENADA c){
+    if(obter_casa(e,c) == UM || obter_casa(e,c) == DOIS || vizinhas_cheias(e,c)){
+        return 1;
+    } else return 0;
+}
+
+int vizinhas_cheias(ESTADO *e, COORDENADA c) {
+    int col = c.coluna, lin = c.linha;
+    for (int i = -1; i < 2; i++){
+        for (int j = -1; j < 2; j++) {
+            if (i != 0 && j != 0) {
+                if (obter_casa(e, coordenada(col + j, lin + i)) == VAZIO) return 0;
+            }
+        }
+    }
+    return 1;
+}
