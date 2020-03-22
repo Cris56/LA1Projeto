@@ -147,12 +147,11 @@ void mais_comandos(ESTADO *e);
  */
 COORDENADA obter_ultima_jogada(ESTADO *e);
 
-int fimdojogo(ESTADO *e, COORDENADA c);
-
-int vizinhas_cheias(ESTADO *e, COORDENADA c);
+/**
+ * \brief Muda a coordenada correspondente à última jogada.
+ * @param e Apontador para o estado
+ * @param c A coordenada que passa a ser a última jogada
+ */
+void mudar_ultima_jogada(ESTADO *e, COORDENADA c);
 
 #endif
-
-/*Por completar:
- * [alterar ultima jogada]
- */
