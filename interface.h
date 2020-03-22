@@ -38,5 +38,11 @@ void gravar(ESTADO *e, char *nome);
  */
 void ler(char *nome);
 
+/**
+ * \brief Determina e congratula o vencedor.
+ * @param e Apontador para o estado
+ * @param c A coordenada da jogada
+ */
+void vencedor(ESTADO *e, COORDENADA c);
 
 #endif
