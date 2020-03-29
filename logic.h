@@ -49,4 +49,18 @@ int vizinhas_cheias(ESTADO *e, COORDENADA c);
  */
 int casa_final(COORDENADA c);
 
+/**
+ * \brief Altera o jogador atual e jogadas.
+ * @param e Apontador para o estado
+ * @param c A coordenada da jogada feita
+ */
+void jog_jogadas(ESTADO *e, COORDENADA c);
+
+/**
+ * \brief Transforma dois caracteres em coordenada válida.
+ * @param c Caracter coluna
+ * @param l Caracter linha
+ */
+COORDENADA chars_para_coord(char c, char l);
+
 #endif
