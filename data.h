@@ -154,4 +154,28 @@ COORDENADA obter_ultima_jogada(ESTADO *e);
  */
 void mudar_ultima_jogada(ESTADO *e, COORDENADA c);
 
+/**
+ * \brief Altera qual a jogada feita por um jogador.
+ * @param e Apontador para o estado
+ * @param c A coordenada da jogada a alterar
+ * @param j O número do jogador
+ */
+void alterar_jogada(ESTADO *e, COORDENADA c, int j);
+
+/**
+ * \brief Obtém o movimento feito por um jogador na jogada.
+ * @param e Apontador para o estado
+ * @param jog O número da jogada
+ * @param j O número do jogador
+ * @return A coordenada do movimento
+ */
+COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j);
+
+/**
+ * \brief Altera o número de jogadas totais.
+ * @param e Apontador para o estado
+ * @param j O número que passa a ser o número de jogadas totais
+ */
+void alterar_num_jogadas(ESTADO *e, int j);
+
 #endif
