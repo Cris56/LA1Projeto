@@ -70,3 +70,20 @@ COORDENADA obter_ultima_jogada(ESTADO *e){
 void mudar_ultima_jogada(ESTADO *e, COORDENADA c) {
     e->ultima_jogada = c;
 }
+
+void alterar_jogada(ESTADO *e, COORDENADA c, int j) {
+    int i = obter_numero_jogadas(e);
+    if (j == 1) e->jogadas[i].jogador1 = c;
+    if (j == 2) e->jogadas[i].jogador2 = c;
+}
+
+void alterar_num_jogadas(ESTADO *e, int j) {
+    e->num_jogadas = j;
+}
+
+COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j) {
+    COORDENADA c = {0, 0};
+    if (j == 1) c = e->jogadas[jog].jogador1;
+    if (j == 2) c = e->jogadas[jog].jogador2;
+    return c;
+}
