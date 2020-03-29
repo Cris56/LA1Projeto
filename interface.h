@@ -34,9 +34,16 @@ void gravar(ESTADO *e, char *nome);
 
 /**
  * \brief Abre um ficheiro.
+ * @param e Apontador para o estado
  * @param nome Nome do ficheiro a abrir
  */
-void ler(char *nome);
+void ler(ESTADO *e, char *nome);
+
+/**
+ * \brief Mostra os movimentos feitos durante o jogo, até ao momento.
+ * @param e Apontador para o estado
+ */
+void movs(ESTADO *e);
 
 /**
  * \brief Determina e congratula o vencedor.
