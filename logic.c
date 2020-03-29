@@ -10,6 +10,8 @@ int jogar(ESTADO *e, COORDENADA c) {
         mudar_casa(e, c,BRANCA);
         mudar_casa(e, obter_ultima_jogada(e),PRETA);
         mudar_ultima_jogada(e, c);
+        jog_jogadas(e, c);
+        if (obter_jogador_atual(e) == 1) mais_jogadas(e);
         return 1;
     }
     return 0;
@@ -53,4 +55,18 @@ int casa_final(COORDENADA c) {
     if (c.coluna == 0 && c.linha == 7) return 1;
     else if (c.coluna == 7 && c.linha == 0) return 2;
     else return 0;
+}
+
+void jog_jogadas(ESTADO *e, COORDENADA c) {
+    int i = 0;
+    int j = obter_jogador_atual(e);
+    if (j == 1) i = 2;
+    if (j == 2) i = 1;
+    alterar_jogada(e, c, j);
+    mudar_jogador_atual(e, i);
+}
+
+COORDENADA chars_para_coord(char c, char l) {
+    COORDENADA coord = {c - 'a', '8' - l};
+    return coord;
 }
