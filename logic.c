@@ -60,9 +60,10 @@ int casa_final(COORDENADA c) {
 void jog_jogadas(ESTADO *e, COORDENADA c) {
     int i = 0;
     int j = obter_jogador_atual(e);
+    int jog = obter_numero_jogadas(e);
     if (j == 1) i = 2;
     if (j == 2) i = 1;
-    alterar_jogada(e, c, j);
+    alterar_jogada(e, c, j, jog);
     mudar_jogador_atual(e, i);
 }
 
