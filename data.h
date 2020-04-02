@@ -159,8 +159,9 @@ void mudar_ultima_jogada(ESTADO *e, COORDENADA c);
  * @param e Apontador para o estado
  * @param c A coordenada da jogada a alterar
  * @param j O número do jogador
+ * @param i O número da jogada a alterar
  */
-void alterar_jogada(ESTADO *e, COORDENADA c, int j);
+void alterar_jogada(ESTADO *e, COORDENADA c, int j, int i);
 
 /**
  * \brief Obtém o movimento feito por um jogador na jogada.
