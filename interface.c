@@ -70,15 +70,34 @@ void gravar(ESTADO *e, char *nome) {
     fclose(f);
 }
 
-void ler(ESTADO *e, char *nome) { //[Ainda com problemas]
+void ler(ESTADO *e, char *nome) {
     FILE *f = fopen(nome, "r");
     char buffer[BUF_SIZE];
     int l = 0;
     while (fgets(buffer, BUF_SIZE, f) != NULL) {
+        if (l == 8) break;
         for (int c = 0; c < 8; c++) {
             mudar_casa(e, coordenada(c, l), buffer[c]);
         }
         l++;
+    }
+    while (fgets(buffer, BUF_SIZE, f) != NULL) {
+        int num_jog;
+        char c1, c2, l1, l2;
+        int num_tokens = sscanf(buffer, "%d: %c%c %c%c", &num_jog, &c1, &l1, &c2, &l2);
+        alterar_num_jogadas(e, num_jog);
+        COORDENADA p1 = chars_para_coord(c1, l1);
+        COORDENADA p2 = chars_para_coord(c2, l2);
+        if (num_tokens == 5) {
+            alterar_jogada(e, p1, 1, num_jog);
+            alterar_jogada(e, p2, 2, num_jog);
+            mudar_ultima_jogada(e, p2);
+            mudar_jogador_atual(e, 1);
+        } else if (num_tokens == 3) {
+            alterar_jogada(e, p1, 1, num_jog);
+            mudar_ultima_jogada(e, p1);
+            mudar_jogador_atual(e, 2);
+        }
     }
     fclose(f);
 }
@@ -100,6 +119,8 @@ void movs(ESTADO *e) {
 void vencedor(ESTADO *e, COORDENADA c) {
     int v = 0;
     int j = obter_jogador_atual(e);
+    if (j == 1) j = 2;
+    else j = 1;
     int f = casa_final(c);
     if (f == 1) v = 1;
     else if (f == 2) v = 2;
