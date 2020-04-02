@@ -36,12 +36,12 @@ int interpretador(ESTADO *e) { //[A completar]
     }
     else {
         if (sscanf(linha, "%s", q) && (!strcmp(q, "Q"))) exit(0);
-        if (sscanf(linha, "%s", m) && (!strcmp(m, "movs"))) movs(e);
         if (sscanf(linha, "%s %s", cmd, arg) == 2) {
             if (!strcmp(cmd, "gr")) gravar(e, arg);
             if (!strcmp(cmd, "ler")) ler(e, arg);
         }
         mostrar_tabuleiro(e);
+        if (sscanf(linha, "%s", m) && (!strcmp(m, "movs"))) movs(e);
     }
     mais_comandos(e);
     return 1;
@@ -103,7 +103,6 @@ void ler(ESTADO *e, char *nome) {
 }
 
 void movs(ESTADO *e) {
-    printf("\n");
     for (int i = 0; i <= obter_numero_jogadas(e); i++) {
         COORDENADA jog1 = obter_mov_jogador(e, i, 1);
         COORDENADA jog2 = obter_mov_jogador(e, i, 2);
@@ -114,6 +113,7 @@ void movs(ESTADO *e) {
             printf("%d: %c%c %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha, jog2.coluna + 'a', '8' - jog2.linha);
         }
     }
+    printf("\n");
 }
 
 void vencedor(ESTADO *e, COORDENADA c) {
