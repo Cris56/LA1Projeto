@@ -127,3 +127,15 @@ void vencedor(ESTADO *e, COORDENADA c) {
     else v = j;
     printf("O vencedor e' o jogador %d! Parabens.\n", v);
 }
+
+//Provisória
+void pos(int a, ESTADO *e){
+    int n = obter_numero_jogadas(e);
+    int m = n;
+    for(a; a < n; a++){
+        int jogador = obter_jogador_atual(e);
+        COORDENADA movi = obter_mov_jogador(e, m, jogador);
+        mudar_casa(e, movi, VAZIO);
+        m--;
+    }
+}
