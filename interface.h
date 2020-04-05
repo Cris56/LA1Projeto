@@ -52,4 +52,6 @@ void movs(ESTADO *e);
  */
 void vencedor(ESTADO *e, COORDENADA c);
 
+void pos(int a, ESTADO *e);
+
 #endif
