@@ -60,11 +60,29 @@ int casa_final(COORDENADA c) {
 void jog_jogadas(ESTADO *e, COORDENADA c) {
     int i = 0;
     int j = obter_jogador_atual(e);
-    int jog = obter_numero_jogadas(e);
+    int jog = obter_numero_jogadas(e) + 1;
     if (j == 1) i = 2;
     if (j == 2) i = 1;
-    alterar_jogada(e, c, j, jog);
     mudar_jogador_atual(e, i);
+    alterar_jogada(e, c, j, jog);
+}
+
+void pos(ESTADO *e, int a) { //[!!!]
+    int n = obter_numero_jogadas(e) + 1;
+    COORDENADA ult;
+    if (a == 0) ult = chars_para_coord('e', '5');
+    else ult = obter_mov_jogador(e, a, 2);
+    if (obter_jogador_atual(e) == 2) mudar_casa(e, obter_ultima_jogada(e), VAZIO);
+    mudar_casa(e, ult, BRANCA);
+    mudar_ultima_jogada(e, ult);
+    for (int i = a + 1; i < n; i++) {
+        COORDENADA coord1 = obter_mov_jogador(e, i, 1);
+        COORDENADA coord2 = obter_mov_jogador(e, i, 2);
+        mudar_casa(e, coord1, VAZIO);
+        mudar_casa(e, coord2, VAZIO);
+    }
+    mudar_jogador_atual(e, 1);
+    alterar_num_jogadas(e, a);
 }
 
 COORDENADA chars_para_coord(char c, char l) {
