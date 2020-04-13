@@ -82,7 +82,7 @@ void alterar_num_jogadas(ESTADO *e, int j) {
 
 COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j) {
     COORDENADA c = {};
-    if (j == 1) c = e->jogadas[jog].jogador1;
-    if (j == 2) c = e->jogadas[jog].jogador2;
+    if (j == 1) c = e->jogadas[jog - 1].jogador1;
+    if (j == 2) c = e->jogadas[jog - 1].jogador2;
     return c;
 }
