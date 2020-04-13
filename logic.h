@@ -57,6 +57,13 @@ int casa_final(COORDENADA c);
 void jog_jogadas(ESTADO *e, COORDENADA c);
 
 /**
+ * \brief Retorna o jogo à posição a seguir ao final da jogada indicada.
+ * @param e Apontador para o estado
+ * @param a O número da jogada
+ */
+void pos(ESTADO *e, int a);
+
+/**
  * \brief Transforma dois caracteres em coordenada válida.
  * @param c Caracter coluna
  * @param l Caracter linha
