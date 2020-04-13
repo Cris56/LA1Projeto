@@ -22,6 +22,7 @@ void mostrar_tabuleiro(ESTADO *e) {
 int interpretador(ESTADO *e) { //[A completar]
     char linha[BUF_SIZE];
     char col[2], lin[2], cmd[50], arg[100], q[1], m[4];
+    int a = 0;
     printf("# [%d] (%d) PL%d > ", obter_num_comandos(e), obter_numero_jogadas(e), obter_jogador_atual(e));
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -35,11 +36,13 @@ int interpretador(ESTADO *e) { //[A completar]
         }
     }
     else {
-        if (sscanf(linha, "%s", q) && (!strcmp(q, "Q"))) exit(0);
+        if (sscanf(linha, "%s", q) && !strcmp(q, "Q")) exit(0);
         if (sscanf(linha, "%s %s", cmd, arg) == 2) {
             if (!strcmp(cmd, "gr")) gravar(e, arg);
             if (!strcmp(cmd, "ler")) ler(e, arg);
         }
+        if (sscanf(linha, "%s %d", cmd, &a) == 2)
+            if (!strcmp(cmd, "pos")) pos(e, a);
         mostrar_tabuleiro(e);
         if (sscanf(linha, "%s", m) && (!strcmp(m, "movs"))) movs(e);
     }
@@ -104,14 +107,11 @@ void ler(ESTADO *e, char *nome) {
 
 void movs(ESTADO *e) {
     for (int i = 0; i <= obter_numero_jogadas(e); i++) {
-        COORDENADA jog1 = obter_mov_jogador(e, i, 1);
-        COORDENADA jog2 = obter_mov_jogador(e, i, 2);
-        COORDENADA jog3 = obter_ultima_jogada(e);
-        if (i == obter_numero_jogadas(e) && obter_jogador_atual(e) == 2) printf("%d: %c%c\n", i + 1, jog3.coluna + 'a', '8' - jog3.linha);
-        else {
-            if (i == obter_numero_jogadas(e)) break;
+        COORDENADA jog1 = obter_mov_jogador(e, i + 1, 1);
+        COORDENADA jog2 = obter_mov_jogador(e, i + 1, 2);
+        if (i != obter_numero_jogadas(e))
             printf("%d: %c%c %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha, jog2.coluna + 'a', '8' - jog2.linha);
-        }
+        else if (obter_jogador_atual(e) == 2) printf("%d: %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha);
     }
     printf("\n");
 }
@@ -126,16 +126,4 @@ void vencedor(ESTADO *e, COORDENADA c) {
     else if (f == 2) v = 2;
     else v = j;
     printf("O vencedor e' o jogador %d! Parabens.\n", v);
-}
-
-//Provisória
-void pos(int a, ESTADO *e){
-    int n = obter_numero_jogadas(e);
-    int m = n;
-    for(a; a < n; a++){
-        int jogador = obter_jogador_atual(e);
-        COORDENADA movi = obter_mov_jogador(e, m, jogador);
-        mudar_casa(e, movi, VAZIO);
-        m--;
-    }
 }
