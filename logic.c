@@ -68,19 +68,29 @@ void jog_jogadas(ESTADO *e, COORDENADA c) {
 }
 
 void pos(ESTADO *e, int a) { //[!!!]
-    int n = obter_numero_jogadas(e) + 1;
+    int n = obter_numero_jogadas(e);
     COORDENADA ult;
     if (a == 0) ult = chars_para_coord('e', '5');
     else ult = obter_mov_jogador(e, a, 2);
-    if (obter_jogador_atual(e) == 2) mudar_casa(e, obter_ultima_jogada(e), VAZIO);
+    if (a < n) {
+        for (int i = a + 1; i < n + 1; i++) {
+            COORDENADA coord1 = obter_mov_jogador(e, i, 1);
+            COORDENADA coord2 = obter_mov_jogador(e, i, 2);
+            mudar_casa(e, coord1, VAZIO);
+            mudar_casa(e, coord2, VAZIO);
+        }
+        if (obter_jogador_atual(e) == 2) mudar_casa(e, obter_ultima_jogada(e), VAZIO);
+    } else if (a > n) {
+        for (int j = n; j <= a; j++) {
+            COORDENADA coord1 = obter_mov_jogador(e, j, 1);
+            COORDENADA coord2 = obter_mov_jogador(e, j, 2);
+            mudar_casa(e, coord1, PRETA);
+            mudar_casa(e, coord2, PRETA);
+        }
+        if (obter_jogador_atual(e) == 2) mudar_casa(e, obter_ultima_jogada(e), PRETA);
+    }
     mudar_casa(e, ult, BRANCA);
     mudar_ultima_jogada(e, ult);
-    for (int i = a + 1; i < n; i++) {
-        COORDENADA coord1 = obter_mov_jogador(e, i, 1);
-        COORDENADA coord2 = obter_mov_jogador(e, i, 2);
-        mudar_casa(e, coord1, VAZIO);
-        mudar_casa(e, coord2, VAZIO);
-    }
     mudar_jogador_atual(e, 1);
     alterar_num_jogadas(e, a);
 }
