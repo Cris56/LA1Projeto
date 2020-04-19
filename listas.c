@@ -3,7 +3,37 @@
 #include <string.h>
 #include "listas.h"
 
-int main() {
+// Cria uma lista vazia
+LISTA criar_lista() {
+
+}
+
+// Insere um valor na cabeça da lista
+LISTA insere_cabeca(LISTA L, void *valor) {
+
+}
+
+// Devolve a cabeça da lista
+void *devolve_cabeca(LISTA L) {
+
+}
+
+// Devolve a cauda da lista
+LISTA devolve_proximo(LISTA L) {
+
+}
+
+// Remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda
+LISTA remove_cabeca(LISTA L) {
+
+}
+
+// Devolve verdareiro se a lista é vazia
+int lista_esta_vazia(LISTA L) {
+
+}
+
+int exemplo() {
     LISTA L = criar_lista(); // Criar uma lista vazia
     char linha[BUF_SIZE];
     printf("Insira várias linhas, acabando com CTRL-D:\n");
