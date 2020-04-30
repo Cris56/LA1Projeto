@@ -8,10 +8,9 @@
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2], cmd[50], arg[100], q[1], m[4];
-    int a = 0;
+    int a = 0, r = 0;
     printf("# [%d] (%d) PL%d > ", obter_num_comandos(e), obter_numero_jogadas(e), obter_jogador_atual(e));
-    if (fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;
+    if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = chars_para_coord(*col, *lin);
         jogar(e, coord);
@@ -26,23 +25,14 @@ int interpretador(ESTADO *e) {
         }
         if (sscanf(linha, "%s %d", cmd, &a) == 2)
             if (!strcmp(cmd, "pos")) pos(e, a);
-        if (sscanf(linha, "%s", m) && !strcmp(m, "jog")) {
-            int r = jog(e);
-            if (r == 10) {
-                mostrar_tabuleiro(e);
-                printvencedor(e);
-            }
+        if (sscanf(linha, "%s", m)) {
+            if (!strcmp(m, "jog")) r = jog(e);
+            else if (!strcmp(m, "jog2")) r = jog2(e);
         }
-        if (sscanf(linha, "%s", m) && !strcmp(m, "jog2")) {
-            int r = jog2(e);
-            if (r == 10) {
-                mostrar_tabuleiro(e);
-                printvencedor(e);
-            }
-    }
         mostrar_tabuleiro(e);
-        if (sscanf(linha, "%s", m) && !strcmp(m, "movs")) movs(e);
+        if (r == 10) printvencedor(e);
     }
+    if (sscanf(linha, "%s", m) && !strcmp(m, "movs")) movs(e);
     mais_comandos(e);
     return 1;
 }
