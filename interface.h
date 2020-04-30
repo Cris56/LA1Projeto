@@ -24,14 +24,14 @@ int interpretador(ESTADO *e);
 /**
  * \brief Grava um ficheiro com o tabuleiro atual.
  * @param e Apontador para o estado
- * @param nome Nome do ficheiro a criar/editar
+ * @param nome Nome a dar ao ficheiro a gravar
  */
 void gravar(ESTADO *e, char *nome);
 
 /**
- * \brief Abre um ficheiro.
+ * \brief Lê um ficheiro.
  * @param e Apontador para o estado
- * @param nome Nome do ficheiro a abrir
+ * @param nome Nome do ficheiro a ler
  */
 void ler(ESTADO *e, char *nome);
 
