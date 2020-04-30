@@ -17,9 +17,7 @@ ESTADO *inicializar_estado() {
     return e;
 }
 
-void mudar_casa(ESTADO *e, COORDENADA c, CASA A) {
-    e->tab[c.coluna][c.linha] = A;
-}
+
 
 COORDENADA coordenada(int j, int i) {
     COORDENADA c;
@@ -28,18 +26,39 @@ COORDENADA coordenada(int j, int i) {
     return c;
 }
 
-void alterar_jogada(ESTADO *e, COORDENADA c, int j, int jog) {
-    if (j == 1) e->jogadas[jog - 1].jogador1 = c;
-    if (j == 2) e->jogadas[jog - 1].jogador2 = c;
+
+
+CASA obter_casa(ESTADO *e, COORDENADA c) {
+    CASA casa = e->tab[c.coluna][c.linha];
+    return casa;
 }
 
-void alterar_num_jogadas(ESTADO *e, int j) {
-    e->num_jogadas = j;
+int obter_jogador_atual(ESTADO *e) {
+    int jog = e->jogador_atual;
+    return jog;
 }
 
-COORDENADA chars_para_coord(char c, char l) {
-    COORDENADA coord = {c - 'a', '8' - l};
-    return coord;
+int obter_numero_jogadas(ESTADO *e) {
+    int n = e->num_jogadas;
+    return n;
+}
+
+COORDENADA obter_ultima_jogada(ESTADO *e){
+    COORDENADA last = e->ultima_jogada;
+    return last;
+}
+
+COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j) {
+    COORDENADA c = {0, 0};
+    if (j == 1) c = e->jogadas[jog - 1].jogador1;
+    if (j == 2) c = e->jogadas[jog - 1].jogador2;
+    return c;
+}
+
+
+
+void mudar_casa(ESTADO *e, COORDENADA c, CASA A) {
+    e->tab[c.coluna][c.linha] = A;
 }
 
 void mudar_jogador_atual(ESTADO *e, int j) {
@@ -50,28 +69,20 @@ void mudar_ultima_jogada(ESTADO *e, COORDENADA c) {
     e->ultima_jogada = c;
 }
 
-COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j) {
-    COORDENADA c = {0, 0};
-    if (j == 1) c = e->jogadas[jog - 1].jogador1;
-    if (j == 2) c = e->jogadas[jog - 1].jogador2;
-    return c;
+
+
+void alterar_jogada(ESTADO *e, COORDENADA c, int j, int jog) {
+    if (j == 1) e->jogadas[jog - 1].jogador1 = c;
+    if (j == 2) e->jogadas[jog - 1].jogador2 = c;
 }
 
-COORDENADA obter_ultima_jogada(ESTADO *e){
-    COORDENADA last = e->ultima_jogada;
-    return last;
+void alterar_num_jogadas(ESTADO *e, int j) {
+    e->num_jogadas = j;
 }
 
-int obter_numero_jogadas(ESTADO *e) {
-    int n = e->num_jogadas;
-    return n;
-}
 
-int obter_jogador_atual(ESTADO *e) {
-    int jog = e->jogador_atual;
-    return jog;
-}
-CASA obter_casa(ESTADO *e, COORDENADA c) {
-    CASA casa = e->tab[c.coluna][c.linha];
-    return casa;
+
+COORDENADA chars_para_coord(char c, char l) {
+    COORDENADA coord = {c - 'a', '8' - l};
+    return coord;
 }
