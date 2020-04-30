@@ -58,7 +58,7 @@ int obter_num_comandos(ESTADO *e) {
     return cmds;
 }
 
-COORDENADA obter_ultima_jogada(ESTADO *e){
+COORDENADA obter_ultima_jogada(ESTADO *e) {
     COORDENADA ult = e->ultima_jogada;
     return ult;
 }
