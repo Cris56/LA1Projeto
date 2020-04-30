@@ -43,7 +43,7 @@ int obter_numero_jogadas(ESTADO *e) {
     return n;
 }
 
-COORDENADA obter_ultima_jogada(ESTADO *e){
+COORDENADA obter_ultima_jogada(ESTADO *e) {
     COORDENADA last = e->ultima_jogada;
     return last;
 }
