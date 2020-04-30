@@ -8,12 +8,6 @@
 #define BUF_SIZE 1024
 
 /**
- * \brief Função que imprime o tabuleiro.
- * @param e Apontador para o estado
- */
-void mostrar_tabuleiro(ESTADO *e);
-
-/**
  * \brief Interpretador de comandos.
  *
  * A função deve:
@@ -24,6 +18,8 @@ void mostrar_tabuleiro(ESTADO *e);
  * @return 1
  */
 int interpretador(ESTADO *e);
+
+
 
 /**
  * \brief Grava um ficheiro com o tabuleiro atual.
@@ -45,11 +41,20 @@ void ler(ESTADO *e, char *nome);
  */
 void movs(ESTADO *e);
 
+
+
 /**
- * \brief Determina e congratula o vencedor.
+ * \brief Função que imprime o tabuleiro.
  * @param e Apontador para o estado
- * @param c A coordenada da jogada
  */
-void vencedor(ESTADO *e, COORDENADA c);
+void mostrar_tabuleiro(ESTADO *e);
+
+
+
+/**
+ * \brief Imprime a mensagem que congratula o vencedor.
+ * @param e Apontador para o estado
+ */
+void printvencedor(ESTADO *e);
 
 #endif
