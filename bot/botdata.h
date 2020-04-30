@@ -57,12 +57,7 @@ typedef struct {
     int num_comandos;
 } ESTADO;
 
-/**
- * \brief Transforma dois caracteres em coordenada válida.
- * @param c Caracter coluna
- * @param l Caracter linha
- */
-COORDENADA chars_para_coord(char c, char l);
+
 
 /**
  * \brief Inicializa o valor do estado.
@@ -71,27 +66,17 @@ COORDENADA chars_para_coord(char c, char l);
  */
 ESTADO *inicializar_estado();
 
-/**
- * \brief Obtém o jogador atual.
- * @param e Apontador para o estado
- * @return O número do jogador atual
- */
-int obter_jogador_atual(ESTADO *e);
+
 
 /**
- * \brief Muda o número do jogador atual
- * @param e Apontador para o estado
- * @param j Número do jogador a alterar
+ * \brief Transforma dois valores i e j numa coordenada a utilizar.
+ * @param j Valor da coluna
+ * @param i Valor da linha
+ * @return A coordenada resultante
  */
-void mudar_jogador_atual(ESTADO *e, int j);
+COORDENADA coordenada(int j, int i);
 
-/**
- * \brief Permite obter quantas jogadas foram efetuadas.
- * (Cada jogada tem o movimento de dois jogadores)
- * @param e Apontador para o estado
- * @return Número de jogadas
- */
-int obter_numero_jogadas(ESTADO *e);
+
 
 /**
  * \brief Obtém a casa indicada.
@@ -102,20 +87,19 @@ int obter_numero_jogadas(ESTADO *e);
 CASA obter_casa(ESTADO *e, COORDENADA c);
 
 /**
- * \brief Muda o valor da cada indicada.
+ * \brief Obtém o jogador atual.
  * @param e Apontador para o estado
- * @param c A coordenada dada
- * @param A O novo valor para a casa
+ * @return O número do jogador atual
  */
-void mudar_casa(ESTADO *e, COORDENADA c, CASA A);
+int obter_jogador_atual(ESTADO *e);
 
 /**
- * \brief Transforma dois valores i e j numa coordenada a utilizar.
- * @param j Valor da coluna
- * @param i Valor da linha
- * @return A coordenada resultante
+ * \brief Permite obter quantas jogadas foram efetuadas.
+ * (Cada jogada tem o movimento de dois jogadores)
+ * @param e Apontador para o estado
+ * @return Número de jogadas
  */
-COORDENADA coordenada(int j, int i);
+int obter_numero_jogadas(ESTADO *e);
 
 /**
  * \brief Obtém a última jogada.
@@ -125,11 +109,39 @@ COORDENADA coordenada(int j, int i);
 COORDENADA obter_ultima_jogada(ESTADO *e);
 
 /**
+ * \brief Obtém o movimento feito por um jogador na jogada.
+ * @param e Apontador para o estado
+ * @param jog O número da jogada
+ * @param j O número do jogador
+ * @return A coordenada do movimento
+ */
+COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j);
+
+
+
+/**
+ * \brief Muda o valor da cada indicada.
+ * @param e Apontador para o estado
+ * @param c A coordenada dada
+ * @param A O novo valor para a casa
+ */
+void mudar_casa(ESTADO *e, COORDENADA c, CASA A);
+
+/**
+ * \brief Muda o número do jogador atual
+ * @param e Apontador para o estado
+ * @param j Número do jogador a alterar
+ */
+void mudar_jogador_atual(ESTADO *e, int j);
+
+/**
  * \brief Muda a coordenada correspondente à última jogada.
  * @param e Apontador para o estado
  * @param c A coordenada que passa a ser a última jogada
  */
 void mudar_ultima_jogada(ESTADO *e, COORDENADA c);
+
+
 
 /**
  * \brief Altera qual a jogada feita por um jogador.
@@ -141,19 +153,19 @@ void mudar_ultima_jogada(ESTADO *e, COORDENADA c);
 void alterar_jogada(ESTADO *e, COORDENADA c, int j, int i);
 
 /**
- * \brief Obtém o movimento feito por um jogador na jogada.
- * @param e Apontador para o estado
- * @param jog O número da jogada
- * @param j O número do jogador
- * @return A coordenada do movimento
- */
-COORDENADA obter_mov_jogador(ESTADO *e, int jog, int j);
-
-/**
  * \brief Altera o número de jogadas totais.
  * @param e Apontador para o estado
  * @param j O número que passa a ser o número de jogadas totais
  */
 void alterar_num_jogadas(ESTADO *e, int j);
+
+
+
+/**
+ * \brief Transforma dois caracteres em coordenada válida.
+ * @param c Caracter coluna
+ * @param l Caracter linha
+ */
+COORDENADA chars_para_coord(char c, char l);
 
 #endif
