@@ -5,21 +5,7 @@
 #include "logic.h"
 #include "interface.h"
 
-void mostrar_tabuleiro(ESTADO *e) {
-    int n = 8;
-    printf("\n");
-    for (int i = 0; i < 8; i++) {
-        printf("%d ", n);
-        n -= 1;
-        for (int j = 0; j < 8; j++) {
-            printf("%c", obter_casa(e, coordenada(j, i)));
-        }
-        printf("\n");
-    }
-    printf("  abcdefgh\n\n");
-}
-
-int interpretador(ESTADO *e) { //[A completar]
+int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2], cmd[50], arg[100], q[1], m[4];
     int a = 0;
@@ -27,13 +13,10 @@ int interpretador(ESTADO *e) { //[A completar]
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-        COORDENADA coord = chars_para_coord(*col, *lin);//{*col - 'a', '8' - *lin}
+        COORDENADA coord = chars_para_coord(*col, *lin);
         jogar(e, coord);
         mostrar_tabuleiro(e);
-        if (fimdojogo(e, coord)) {
-            vencedor(e, coord);
-            exit(0);
-        }
+        if (fimdojogo(e, coord)) printvencedor(e);
     }
     else {
         if (sscanf(linha, "%s", q) && !strcmp(q, "Q")) exit(0);
@@ -43,12 +26,28 @@ int interpretador(ESTADO *e) { //[A completar]
         }
         if (sscanf(linha, "%s %d", cmd, &a) == 2)
             if (!strcmp(cmd, "pos")) pos(e, a);
+        if (sscanf(linha, "%s", m) && !strcmp(m, "jog")) {
+            int r = jog(e);
+            if (r == 10) {
+                mostrar_tabuleiro(e);
+                printvencedor(e);
+            }
+        }
+        if (sscanf(linha, "%s", m) && !strcmp(m, "jog2")) {
+            int r = jog2(e);
+            if (r == 10) {
+                mostrar_tabuleiro(e);
+                printvencedor(e);
+            }
+    }
         mostrar_tabuleiro(e);
-        if (sscanf(linha, "%s", m) && (!strcmp(m, "movs"))) movs(e);
+        if (sscanf(linha, "%s", m) && !strcmp(m, "movs")) movs(e);
     }
     mais_comandos(e);
     return 1;
 }
+
+
 
 void gravar(ESTADO *e, char *nome) {
     FILE *f;
@@ -116,14 +115,26 @@ void movs(ESTADO *e) {
     printf("\n");
 }
 
-void vencedor(ESTADO *e, COORDENADA c) {
-    int v = 0;
-    int j = obter_jogador_atual(e);
-    if (j == 1) j = 2;
-    else j = 1;
-    int f = casa_final(c);
-    if (f == 1) v = 1;
-    else if (f == 2) v = 2;
-    else v = j;
-    printf("O vencedor e' o jogador %d! Parabens.\n", v);
+
+
+void mostrar_tabuleiro(ESTADO *e) {
+    int n = 8;
+    printf("\n");
+    for (int i = 0; i < 8; i++) {
+        printf("%d ", n);
+        n -= 1;
+        for (int j = 0; j < 8; j++) {
+            printf("%c", obter_casa(e, coordenada(j, i)));
+        }
+        printf("\n");
+    }
+    printf("  abcdefgh\n\n");
+}
+
+
+
+void printvencedor(ESTADO *e) {
+    int j = vencedor(e, obter_ultima_jogada(e));
+    printf("O vencedor e' o jogador %d! Parabens.\n", j);
+    exit(0);
 }
