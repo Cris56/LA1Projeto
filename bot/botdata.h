@@ -1,6 +1,6 @@
 /**
  * @file botdata.h
- * Funções auxiliares do bot e tipos de dados
+ * Funções auxiliares do bot sobre dados e tipos de dados
  */
 
 #ifndef __BOTDATA_H__
@@ -162,10 +162,9 @@ void alterar_num_jogadas(ESTADO *e, int j);
 
 
 /**
- * \brief Transforma dois caracteres em coordenada válida.
- * @param c Caracter coluna
- * @param l Caracter linha
+ * \brief Adiciona uma jogada ao número existente
+ * @param e Apontador para o estado
  */
-COORDENADA chars_para_coord(char c, char l);
+void mais_jogadas(ESTADO *e);
 
 #endif
