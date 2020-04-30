@@ -82,7 +82,6 @@ void alterar_num_jogadas(ESTADO *e, int j) {
 
 
 
-COORDENADA chars_para_coord(char c, char l) {
-    COORDENADA coord = {c - 'a', '8' - l};
-    return coord;
+void mais_jogadas(ESTADO *e) {
+    e->num_jogadas += 1;
 }
