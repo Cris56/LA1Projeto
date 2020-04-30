@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="interface_8h" kind="file" language="C++">
+    <compoundname>interface.h</compoundname>
+    <includedby refid="interface_8c" local="yes">interface.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="interface_8h_1a6821bafc3c88dfb2e433a095df9940c6" prot="public" static="no">
+        <name>BUF_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="8" column="18" bodyfile="interface.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="interface_8h_1a24da95ebeede4a540e37790ce8be359b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int interpretador</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>interpretador</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Interpretador de comandos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A função deve:<orderedlist>
+<listitem><para>Ler uma linha (usando fgets)</para>
+</listitem><listitem><para>Separar a linha por espaços (por exemplo utilizando sscanf ou strtok)</para>
+</listitem><listitem><para>Conforme o comando a executar, chamar a função correspondente do interface ou da lógica do programa e depois do interface. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 </para>
+</simplesect>
+</para>
+</listitem></orderedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="20" column="5" bodyfile="interface.c" bodystart="8" bodyend="38" declfile="interface.h" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_8h_1aac4b0d39be667a26989f9b5ff6f086e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gravar</definition>
+        <argsstring>(ESTADO *e, char *nome)</argsstring>
+        <name>gravar</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>nome</declname>
+        </param>
+        <briefdescription>
+<para>Grava um ficheiro com o tabuleiro atual. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nome</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nome a dar ao ficheiro a gravar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="29" column="6" bodyfile="interface.c" bodystart="42" bodyend="63" declfile="interface.h" declline="29" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_8h_1a77816bbed900e4f1a7455174cca81a21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ler</definition>
+        <argsstring>(ESTADO *e, char *nome)</argsstring>
+        <name>ler</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>nome</declname>
+        </param>
+        <briefdescription>
+<para>Lê um ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nome</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nome do ficheiro a ler </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="36" column="6" bodyfile="interface.c" bodystart="65" bodyend="95" declfile="interface.h" declline="36" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_8h_1a8d63019a8176de612e33bf8c72121760" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void movs</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>movs</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mostra os movimentos feitos durante o jogo, até ao momento. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="42" column="6" bodyfile="interface.c" bodystart="97" bodyend="106" declfile="interface.h" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_8h_1aa0b6c1689e60ac852a73d67e066c1df5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mostrar_tabuleiro</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>mostrar_tabuleiro</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que imprime o tabuleiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="50" column="6" bodyfile="interface.c" bodystart="110" bodyend="122" declfile="interface.h" declline="50" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_8h_1abc2ba8bef769864c36837ade4779ed2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void printvencedor</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>printvencedor</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Imprime a mensagem que congratula o vencedor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="interface.h" line="58" column="6" bodyfile="interface.c" bodystart="126" bodyend="130" declfile="interface.h" declline="58" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Definição das funções da parte da interface do programa </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>___INTERFACE_H___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/>___INTERFACE_H___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUF_SIZE<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1a24da95ebeede4a540e37790ce8be359b" kindref="member">interpretador</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1aac4b0d39be667a26989f9b5ff6f086e3" kindref="member">gravar</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*nome);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1a77816bbed900e4f1a7455174cca81a21" kindref="member">ler</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*nome);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1a8d63019a8176de612e33bf8c72121760" kindref="member">movs</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1aa0b6c1689e60ac852a73d67e066c1df5" kindref="member">mostrar_tabuleiro</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="interface_8h_1abc2ba8bef769864c36837ade4779ed2e" kindref="member">printvencedor</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="interface.h"/>
+  </compounddef>
+</doxygen>
