@@ -87,10 +87,14 @@ void gravarf(ESTADO *e, char *nome) {
         COORDENADA jog1 = obter_mov_jogador(e, i, 1);
         COORDENADA jog2 = obter_mov_jogador(e, i, 2);
         COORDENADA jog3 = obter_ultima_jogada(e);
-        if (i == obter_numero_jogadas(e) && obter_jogador_atual(e) == 2) fprintf(f, "%d: %c%c\n", i + 1, jog3.coluna + 'a', '8' - jog3.linha);
+        if (i == obter_numero_jogadas(e) && obter_jogador_atual(e) == 2) {
+            if (i <= 9) fprintf(f, "0%d: %c%c\n", i + 1, jog3.coluna + 'a', '8' - jog3.linha);
+            else fprintf(f, "%d: %c%c\n", i + 1, jog3.coluna + 'a', '8' - jog3.linha);
+        }
         else {
             if (i == obter_numero_jogadas(e)) break;
-            fprintf(f, "%d: %c%c %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha, jog2.coluna + 'a', '8' - jog2.linha);
+            if (i <= 9) fprintf(f, "0%d: %c%c %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha, jog2.coluna + 'a', '8' - jog2.linha);
+            else fprintf(f, "%d: %c%c %c%c\n", i + 1, jog1.coluna + 'a', '8' - jog1.linha, jog2.coluna + 'a', '8' - jog2.linha);
         }
     }
     fclose(f);
